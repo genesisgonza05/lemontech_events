@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  pool: 5
+
+development:
+  <<: *default
+  database: lemontech_events_development
+
+test:
+  <<: *default
+  database: lemontech_events_test
+
+production:
+  <<: *default
+  database: lemontech_events_production
+  username: lemontech_events
+  password: <%= ENV['LEMONTECH_EVENTS_DATABASE_PASSWORD'] %>
