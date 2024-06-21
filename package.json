@@ -1,0 +1,7 @@
+{
+  "name": "lemontech_events",
+  "private": true,
+  "dependencies": {
+    "@rails/ujs": "^7.0.0"
+  }
+}

@@ -20,13 +20,18 @@ gem "sass-rails", "~> 6.0"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
   gem "web-console"
+  gem "bullet"
 end
 
 group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem "cucumber-rails", require: false
+  gem "database_cleaner-active_record"
+  gem "rails-controller-testing"
 end

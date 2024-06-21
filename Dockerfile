@@ -15,6 +15,10 @@ COPY Gemfile /lemontech_events/Gemfile
 COPY Gemfile.lock /lemontech_events/Gemfile.lock
 RUN bundle install
 
+# Copiar package.json y ejecutar yarn install para generar yarn.lock
+COPY package.json /lemontech_events/package.json
+RUN yarn install
+
 # Copiar el resto del código de la aplicación
 COPY . /lemontech_events
 

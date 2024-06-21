@@ -1,0 +1,5 @@
+es:
+  hello: "Hello world"
+  events:
+    delete:
+      confirm: '¿Estás seguro que deseas eliminar el evento (%{number}) - "%{name}"?'

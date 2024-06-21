@@ -30,6 +30,7 @@ docker-compose up -d
 ```sh
 docker-compose run web rake db:create
 docker-compose run web rake db:migrate
+docker-compose run web rake db:seed
 ```
 
 ## Levantar la aplicación frecuentemente
@@ -47,9 +48,14 @@ docker-compose down
 
 ## Ejecutar Pruebas
 
-Para ejecutar las pruebas del proyecto:
+Para ejecutar las pruebas de Rspec (Unitarias):
 ```sh
-docker-compose run web rake test
+docker-compose run test rspec
+```
+
+Para ejecutar las pruebas de Cucumber (de Integración):
+```sh
+docker-compose run test cucumber
 ```
 
 ## Estructura del Proyecto

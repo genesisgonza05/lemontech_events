@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <nav class="sidebar">
+    <%= render 'layouts/sidebar' %>
+  </nav>
+  <main class="main-content p-3">
+    <%= render 'layouts/flash_messages' %>
+    <%= yield %>
+  </main>
+</div>

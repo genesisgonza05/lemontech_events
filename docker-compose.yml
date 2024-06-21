@@ -17,6 +17,18 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    environment:
+      RAILS_ENV: development
+
+  test:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rspec"
+    volumes:
+      - .:/lemontech_events
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: test
 
 volumes:
   postgres_data:

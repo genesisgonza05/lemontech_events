@@ -1,0 +1,48 @@
+# config/locales/devise.es.yml
+es:
+  errors:
+    messages:
+      not_saved:
+        one: "1 error no permitió que este %{resource} se guardara:"
+        other: "%{count} errores no permitieron que este %{resource} se guardara:"
+  devise:
+    failure:
+      already_authenticated: "Ya has iniciado sesión."
+      unauthenticated: "Debes iniciar sesión o registrarte para continuar."
+      invalid: "Email o contraseña inválidos."
+      invalid_token: "Token inválido."
+      locked: "Tu cuenta está bloqueada."
+      timeout: "Tu sesión ha expirado, por favor vuelve a iniciar sesión."
+      not_found_in_database: "Email o contraseña incorrectos."
+      inactive: "Tu cuenta no está activada todavía."
+      last_attempt: "Advertencia: solo te queda un intento antes de que tu cuenta se bloquee."
+      expired: "Tu cuenta ha expirado, por favor contacta al administrador."
+      email_blank: "El email no puede estar en blanco."
+      password_blank: "La contraseña no puede estar en blanco."
+    sessions:
+      signed_in: "Iniciaste sesión correctamente."
+      signed_out: "Cerraste sesión correctamente."
+    registrations:
+      signed_up: "Te registraste correctamente."
+      updated: "Tu cuenta ha sido actualizada correctamente."
+      destroyed: "Tu cuenta ha sido eliminada correctamente."
+      signed_up_but_unconfirmed: "Te registraste correctamente, pero necesitamos verificar tu email."
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "No puede estar en blanco."
+              invalid: "No es válido."
+              taken: "Ya está registrado."
+            password:
+              blank: "No puede estar en blanco."
+              confirmation: "No coincide con la confirmación."
+              too_short: "Es demasiado corta (mínimo %{count} caracteres)."
+            password_confirmation:
+              blank: "No puede estar en blanco."
+              confirmation: "No coincide con el password."
+            current_password:
+              blank: "No puede estar en blanco."
+              invalid: "No es válido."

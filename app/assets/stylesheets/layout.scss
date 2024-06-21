@@ -1,0 +1,177 @@
+body {
+  background-color: #f8f9fa;
+}
+
+footer {
+  background-color: #090d7f;
+  color: #ffffff;
+  padding: 1rem 0;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #56b242;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container-fluid {
+  display: flex;
+  flex: 1;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 162px;
+}
+
+.main-not-signed-content {
+  flex: 1;
+  margin-left: 0;
+  
+  .container-fluid {
+    height: 91vh !important;
+  }
+
+  .flash-message {
+    top: 83px;
+    left: 75%;
+  }
+}
+
+.flash-message {
+  position: fixed;
+  top: 80px;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  min-width: 300px;
+  text-align: center;
+}
+
+.navbar-brand {
+  width: 25%;
+}
+
+.sidebar {
+  width: 162px;
+  height: calc(100vh - 72px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding-top: 1rem;
+  background-color: #0000ff;
+  border-right: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar ul {
+  width: 100%;
+  padding-left: 0;
+}
+
+.sidebar .nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar .nav-item .nav-link {
+  width: 100%;
+  color: #fff;
+}
+
+.sidebar .nav-item .nav-link:hover {
+  color: #000af7;
+}
+
+.sidebar .li-logout {
+  background: #a7a7a7;
+  .nav-link:hover {
+    color: #893636;
+  }
+}
+
+.li-logout:hover {
+  background:  #cfc9c9;
+}
+
+.ul-menu {
+  .li-text:hover {
+    background: white;
+  }
+
+  img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.btn-icon i {
+  font-size: 1rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.actions-column {
+  width: 150px;
+  
+  .button_to {
+    display: inline-block;
+
+    .btn-icon {
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
+.btn-primary {
+  background-color: #000af7;
+  border-color: #000af7;
+  font-weight: bold;
+}
+
+a {
+  color: #000af7;
+}
+
+.btn-success {
+  background-color: #56b242;
+  border-color: #56b242;
+  font-weight: bold;
+}
+
+

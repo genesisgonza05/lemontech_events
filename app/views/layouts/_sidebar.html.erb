@@ -1,0 +1,18 @@
+<div class="d-flex flex-column h-100 w-100">
+  <ul class="nav flex-column flex-grow-1 ul-menu">
+    <li class="nav-item">
+      <%= link_to image_tag('title-lemontech.png', alt: 'LemontechEvents', class: 'brand'), root_path %>
+    </li>
+    <li class="nav-item li-text">
+      <%= link_to 'Mis Eventos', events_path, class: "nav-link" %>
+    </li>
+  </ul>
+  <ul class="nav flex-column">
+    <li class="nav-item mt-auto li-logout">
+      <%= link_to destroy_user_session_path, class: "nav-link" do %>
+          Cerrar Sesión  <i class="fa fa-sign-out"></i> 
+      <% end %>
+
+    </li>
+  </ul>
+</div>
