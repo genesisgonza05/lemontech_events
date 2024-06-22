@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<%= search_form_for @q, url: events_path, method: :get, class: "events-search-box", data: { turbo_frame: "events" } do |f| %>
+<%= search_form_for @q, url: events_path, method: :get, class: "search-box", data: { turbo_frame: "events" } do |f| %>
   <div class="row">
     <div class="col-md-4">
       <%= f.label :name_cont, "Nombre", class: "font-weight-bold mb-2" %>

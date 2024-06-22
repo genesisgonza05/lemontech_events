@@ -9,3 +9,16 @@
   font-size: 12px
 }
 
+.form-control[readonly] {
+  background: #fff;
+}
+
+.search-box, .form-box {
+  padding: 13px 17px 20px;
+  background: #fff;
+  border: 1px solid #c5c7cb;
+  border-radius: 0.25rem;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+

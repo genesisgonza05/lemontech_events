@@ -1,4 +1,4 @@
-<%= form_with(model: event, local: true, class: "event-form-box") do |form| %>
+<%= form_with(model: event, local: true, class: "form-box shadow-sm") do |form| %>
   <% if event.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(event.errors.count, "error") %> prohibieron que este evento se guardara:</h2>
