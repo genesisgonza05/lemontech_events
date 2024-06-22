@@ -12,8 +12,17 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-group em, 
-.form-group i {
-  color: #0069f09e;
-  font-size: 12px
+
+.main-not-signed-content {
+  flex: 1;
+  margin-left: 0;
+  
+  .container-fluid {
+    height: 91vh !important;
+  }
+
+  .flash-message {
+    top: 83px;
+    left: 75%;
+  }
 }

@@ -19,7 +19,7 @@ footer {
   padding: 1rem 0;
   width: 100%;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; /* Asegura que el footer no se reduzca */
+  flex-shrink: 0;
 }
 
 footer a:hover {
@@ -36,58 +36,9 @@ a:hover {
   color: #1f3dff;
 }
 
-body {
-  background-color: #fbfcff;
-}
-
-.pagination span,
-.pagination a {
-  color: #000;
-  background: #fbfbfb;
-  text-align: center;
-  margin: 0 5px;
-  width: 35px;
-  border-radius: 7px;
-}
-
-.pagination a:hover {
-  color: #000;
-  background: #e3e3e3;
-}
-
-.pagination span a {
-  padding: 3px 10px 5px;
-}
-
-.pagination span.current {
-  color: #fff;
-  background: #57b0419e;
-}
-
-.events-search-box {
-  padding: 31px;
-  background: #fff;
-  border: 1px solid #c5c7cb;
-  border-radius: 27px;
-  margin: 35px 0;
-}
 
 .box-title-buttons {
-  margin: 15px 0 20px;
-}
-
-.main-not-signed-content {
-  flex: 1;
-  margin-left: 0;
-  
-  .container-fluid {
-    height: 91vh !important;
-  }
-
-  .flash-message {
-    top: 83px;
-    left: 75%;
-  }
+  margin: 15px 0;
 }
 
 .flash-message {
@@ -100,49 +51,8 @@ body {
   text-align: center;
 }
 
-.btn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-}
-
-.btn-icon i {
-  font-size: 1rem;
-}
-
 .mr-2 {
   margin-right: 0.5rem;
-}
-
-.btn-primary {
-  background-color: #000af7;
-  border-color: #000af7;
-  font-weight: bold;
-}
-
-a {
-  color: #000af7;
-}
-
-.btn-success {
-  background-color: #56b242;
-  border-color: #56b242;
-  font-weight: bold;
-}
-
-.actions-column {
-  width: 150px;
-  
-  .button_to {
-    display: inline-block;
-
-    .btn-icon {
-      padding: 0.25rem 0.5rem;
-    }
-  }
 }
 
 .navbar-brand {
@@ -210,67 +120,11 @@ a {
   padding: 7px 33px 7px 30px;
 }
 
-.btn-action-custome {
-  padding: 12px 36px;
-  border-radius: 14px;
-  text-transform: uppercase;
-}
-
 .font-weight-bold {
   font-weight: bold;
 }
 
-.form-control {
-  width: 100%;
-  border-radius: 0.6rem;
-}
-
-.font-weight-bold {
-  font-weight: bold;
-}
-
-.btn-action-custome {
-  width: 100%;
-}
-
-table .pl-3 {
+.pl-3 {
   padding-left: 30px 
 }
-
-.btn-light{
-  color: #fff;
-  background-color: #c5c5c5;
-  border-color: #c5c5c5;
-}
-
-.btn-light:hover {
-  color: #fff;
-  background-color: #aba6a6;
-  border-color: #aba6a6;
-}
-
-.btn-info{
-  color: #fff;
-  background-color: #6f98f1;
-  border-color: #6f98f1;
-}
-
-.btn-info:hover {
-  background-color: #5270b3;
-  border-color: #5270b3;
-}
-
-.btn-edit{
-  color: #fff;
-  background-color: #95d188;
-  border-color: #95d188;
-}
-
-.btn-edit:hover {
-  color: #fff;
-  background-color: #85a57e;
-  border-color: #85a57e;
-}
-
-
 
