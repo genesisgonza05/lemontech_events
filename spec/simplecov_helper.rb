@@ -6,6 +6,9 @@ SimpleCov.start 'rails' do
   add_filter '/spec/'
 end
 
-SimpleCov.coverage_dir 'coverage/rspec' # Puedes personalizar la carpeta de salida si lo deseas
+if ENV['CI']
+  require 'codeclimate-test-reporter'
+  CodeClimate::TestReporter.start
+end
 
-puts "SimpleCov started"
+puts "required simplecov"
