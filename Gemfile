@@ -17,6 +17,8 @@ gem "bootstrap", "~> 5.1.3"
 gem "jquery-rails"
 gem "font-awesome-sass", "~> 4.7.0"
 gem "sass-rails", "~> 6.0"
+gem 'kaminari'
+gem 'ransack'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
@@ -27,11 +29,13 @@ end
 
 group :development do
   gem "web-console"
-  gem "bullet"
+  gem 'letter_opener_web'
 end
 
 group :test do
   gem "cucumber-rails", require: false
   gem "database_cleaner-active_record"
   gem "rails-controller-testing"
+  gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter', require: false
 end

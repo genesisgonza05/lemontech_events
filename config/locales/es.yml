@@ -1,5 +1,25 @@
 es:
   hello: "Hello world"
   events:
+    form:
+      button:
+        create: "Crear Evento"
+        edit: "Editar Evento"
     delete:
       confirm: '¿Estás seguro que deseas eliminar el evento (%{number}) - "%{name}"?'
+  views:
+    pagination:
+      first: "<< "
+      last: " >>"
+      previous: " < "
+      next: " > "
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} encontrado"
+          one: "Mostrando <b>1</b> %{entry_name}"
+          other: "Mostrando <b>todos %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} <b>%{first}–%{last}</b> de <b>%{total}</b> en total"

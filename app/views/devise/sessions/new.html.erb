@@ -9,16 +9,16 @@
           <h4>Inicio de Sesión</h4>
         </div>
         <div class="card-body">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
-            <div class="form-group">
-              <%= f.label :email %>
+            <div class="form-group mb-3">
+              <%= f.label :email, class: "font-weight-bold mb-2" %>
               <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Ingresa tu email" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password %>
+              <%= f.label :password, class: "font-weight-bold mb-2" %>
               <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Ingresa tu password" %>
             </div>
 

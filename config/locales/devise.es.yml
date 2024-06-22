@@ -27,8 +27,16 @@ es:
       updated: "Tu cuenta ha sido actualizada correctamente."
       destroyed: "Tu cuenta ha sido eliminada correctamente."
       signed_up_but_unconfirmed: "Te registraste correctamente, pero necesitamos verificar tu email."
+    passwords:
+      send_instructions: "Se ha enviado un email a su correo con las instrucciones para recuperar la contraseña"
+      updated: "Password actualizado con exito, ha iniciado sesión."
   activerecord:
+    attributes:
+      user:
+        current_password: "Password actual"
     errors:
+      messages:
+        current_password: "Password actual"
       models:
         user:
           attributes:

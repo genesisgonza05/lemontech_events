@@ -60,6 +60,7 @@ docker-compose run test cucumber
 
 ## Estructura del Proyecto
 
+```sh
 lemontech_events/
 	├── app/
 	├── bin/
@@ -76,6 +77,15 @@ lemontech_events/
 	├── storage/
 	├── test/
 	└── tmp/
+```
+
+## Mailing
+
+El proyecto cuenta con revision de emails con letter_opener_web en el ambiente de desarrollo, si deseas ver los emails enviados en tu entorno de desarrollo tan solo entra al siguiente enlace:
+
+![http://localhost:3000/letter_opener](http://localhost:3000/letter_opener)
 
 
 
+
+![Gestor de emails de la aplicación](public/emails-manager.png)

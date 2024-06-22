@@ -2,9 +2,16 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_user_event, only: %i[ show edit update destroy ]
 
-  # GET /events or /events.json
+  # GET /events
   def index
-    @events = current_user.events
+    @q = current_user.events_ordered(sort_column, sort_direction).ransack(params[:q])
+    @events = @q.result(distinct: true).page(params[:page]).per(Event::PER_PAGE)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+      format.js
+    end
   end
 
   # GET /events/1 or /events/1.json
@@ -18,6 +25,8 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @view = params[:view] || "list"
+    @back_path = @view == "show" ? event_path(@event) : events_path
   end
 
   # POST /events or /events.json
@@ -53,19 +62,27 @@ class EventsController < ApplicationController
     @event.destroy!
 
     respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
+      format.html { redirect_to events_url, notice: "Evento eliminado con éxito." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.require(:event).permit(:name, :description, :event_date_time, :location, :capacity, :requirements, :user_id)
-    end
 
-    def check_user_event
-      @event = current_user.events.find_by(id: params[:id])
-      redirect_to events_path, notice: "Not authorized to edit this event" if @event.nil?
-    end
+  def event_params
+    params.require(:event).permit(:name, :description, :event_date_time, :location, :capacity, :requirements, :user_id)
+  end
+
+  def check_user_event
+    @event = current_user.events.find_by(id: params[:id])
+    redirect_to events_path, notice: "Not authorized to edit this event" if @event.nil?
+  end
+
+  def sort_column
+    %w[event_date_time name location capacity].include?(params[:sort]) ? params[:sort] : "event_date_time"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end
