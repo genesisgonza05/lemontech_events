@@ -1,0 +1,39 @@
+<!-- app/views/events/index.html.erb -->
+<div class="d-flex justify-content-between align-items-center box-title-buttons">
+  <div class="flex-grow-1">
+    <h1 class="mb-0 font-weight-bold">Mis Eventos</h1>
+  </div>
+  <div>
+    <%= link_to 'Nuevo Evento', new_event_path, class: 'btn btn-primary btn-action-custome' %>
+  </div>
+</div>
+
+<%= search_form_for @q, url: events_path, method: :get, class: "events-search-box", data: { turbo_frame: "events" } do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :name_cont, "Nombre", class: "font-weight-bold mb-2" %>
+      <%= f.search_field :name_cont, placeholder: "Nombre del evento", class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.label :event_date_time_range, "Rango de fecha y hora", class: "font-weight-bold mb-2" %>
+      <div class="d-flex">
+        <%= f.datetime_field :event_date_time_gteq, placeholder: "Inicio", class: "form-control me-2", readonly: true %>
+        <%= f.datetime_field :event_date_time_lteq, placeholder: "Fin", class: "form-control", readonly: true %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <%= f.label :capacity_range, "Rango de Cap.", class: "font-weight-bold mb-2" %>
+      <div class="d-flex">
+        <%= f.number_field :capacity_gteq, placeholder: "Mín", class: "form-control me-2" %>
+        <%= f.number_field :capacity_lteq, placeholder: "Máx", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2 d-flex align-items-center mt-2">
+      <%= f.submit "Buscar", class: "btn btn-primary w-100 btn-action-custome" %>
+    </div>
+  </div>
+<% end %>
+
+<turbo-frame id="events" class="events_list">
+  <%= render 'events_list', events: @events %>
+</turbo-frame>

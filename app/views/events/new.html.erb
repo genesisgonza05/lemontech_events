@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-between align-items-center box-title-buttons">
+  <div class="flex-grow-1">
+    <h1 class="mb-0 font-weight-bold">Nuevo Evento </h1>
+  </div>
+  <div>
+    <%= link_to events_path, class: "btn btn-secondary btn-icon btn-action-custome" do %>
+      <i class="fa fa-arrow-left mr-2"></i> Volver
+    <% end %>
+  </div>
+</div>
+
+<%= render "form", event: @event, button_name: I18n.t("events.form.button.create") %>

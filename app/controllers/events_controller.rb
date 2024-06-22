@@ -79,10 +79,10 @@ class EventsController < ApplicationController
   end
 
   def sort_column
-    %w[event_date_time name location capacity].include?(params[:sort]) ? params[:sort] : "event_date_time"
+    %w[event_date_time name location capacity].include?(params[:sort]) ? params[:sort] : "id"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

@@ -1,0 +1,41 @@
+<% if @events.blank? %>
+  <div>No hay eventos registrados aún.</div>
+<% else %>
+  <div class="table-container pb-4">
+    <table class="table table-striped mb-4 mt-1">
+      <thead>
+        <tr>
+          <th class="pl-3"><%= sortable "id", "N°" %></th>
+          <th><%= sortable "name", "Nombre" %></th>
+          <th><%= sortable "event_date_time", "Fecha y Hora" %></th>
+          <th><%= sortable "capacity", "Capacidad" %></th>
+          <th class="text-right"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+          <tr id="<%= dom_id(event) %>" class="row-event-<%= event.id %>">
+            <td class="pl-3"><%= event.id %></td>
+            <td><%= event.name %></td>
+            <td><%= long_formatted_date_time(event.event_date_time) %></td>
+            <td><%= event.capacity %></td>
+            <td class="text-right actions-column">
+              <%= link_to event_path(event), class: "btn btn-info btn-sm btn-icon mr-2", data: { turbo: false } do %>
+                <i class="fa fa-eye text-white"></i>
+              <% end %>
+              <%= link_to edit_event_path(event), class: "btn btn-primary btn-sm btn-icon mr-2", data: { turbo: false } do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+              <%= button_to event_path(event), method: :delete, data: { confirm: I18n.t('events.delete.confirm', name: event.name, number: event.id), turbo: false }, class: "btn btn-danger btn-sm btn-icon d-inline-block" do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <%= paginate @events %>
+    </div>
+  </div>
+<% end %>

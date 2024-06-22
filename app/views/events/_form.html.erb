@@ -1,0 +1,71 @@
+<%= form_with(model: event, local: true, class: "event-form-box") do |form| %>
+  <% if event.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibieron que este evento se guardara:</h2>
+      <ul>
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :name, class: "d-block font-weight-bold mb-2" %>
+        <%= form.text_field :name, class: "form-control", placeholder: "Nombre del evento" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :location, class: "d-block font-weight-bold mb-2" %>
+        <%= form.text_field :location, class: "form-control", placeholder: "Ubicación del evento" %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.label :event_date_time, class: "d-block font-weight-bold mb-2" %>
+        <%= form.datetime_field :event_date_time, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.label :capacity, class: "d-block font-weight-bold mb-2" %>
+        <%= form.number_field :capacity, class: "form-control", placeholder: "Capacidad del evento" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :description, class: "d-block font-weight-bold mb-2" %>
+        <%= form.text_area :description, class: "form-control", placeholder: "Descripción del evento" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :requirements, class: "d-block font-weight-bold mb-2" %>
+        <%= form.text_area :requirements, class: "form-control", placeholder: "Requisitos del evento" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+      <div class="form-group mt-3">
+        <%= form.submit button_name, class: "btn btn-primary btn-block btn-action-custome"%>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,75 @@
+<div id="<%= dom_id event %>" class="card shadow-sm mb-4">
+  <div class="card-body">
+
+    <div class="row">
+       <div class="col-md-6 mb-3">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <h2 class="card-title">
+              <strong><%= event.name %></strong>
+            </h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <p class="card-text">
+              <%= event.description.capitalize %>
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <p class="card-text">
+              <strong>Fecha y hora:</strong>
+            </p>
+            <p class="card-text">
+              <%= long_formatted_date_time(event.event_date_time) %>
+            </p>            
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <p class="card-text">
+              <strong>Ubicación:</strong>
+            </p>
+            <p class="card-text">
+              <%= event.location %>
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <p class="card-text">
+              <strong>Capacidad:</strong>
+            </p>
+            <p class="card-text">
+              <%= event.capacity %>
+            </p>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <p class="card-text">
+              <strong>Requerimientos:</strong>
+            </p>
+            <p class="card-text">
+              <%= event.requirements %>
+            </p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="col-md-6 mb-3 text-center">
+        <%= image_tag('no-image.jpg', alt: 'No Image', class: 'brand') %>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
