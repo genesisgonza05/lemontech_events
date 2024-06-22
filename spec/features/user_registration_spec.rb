@@ -6,7 +6,7 @@ describe 'User Registration', type: :feature do
 
     fill_in 'Email', with: 'test@example.com'
     fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
+    fill_in 'Confirma tu password', with: 'password'
     click_button 'Registrar'
 
     expect(page).to have_content(I18n.t('devise.registrations.signed_up'))

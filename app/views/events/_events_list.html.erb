@@ -5,10 +5,10 @@
     <table class="table table-striped mb-4">
       <thead>
         <tr>
-          <th class="pl-3"><%= sortable "id", "N°" %></th>
-          <th><%= sortable "name", "Nombre" %></th>
-          <th><%= sortable "event_date_time", "Fecha y Hora" %></th>
-          <th><%= sortable "capacity", "Capacidad" %></th>
+          <th class="pl-3"><%= sort_link(@q, :id, "N°", {data: {turbo: false}}) %></th>
+          <th><%= sort_link(@q, :name, "Name", {data: {turbo: false}}) %></th>
+          <th><%= sort_link(@q, :event_date_time, "Fecha y Hora", {data: {turbo: false}}) %></th>
+          <th><%= sort_link(@q, :capacity, "Capacidad", {data: {turbo: false}}) %></th>
           <th class="text-right"></th>
         </tr>
       </thead>

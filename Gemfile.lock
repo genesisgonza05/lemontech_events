@@ -354,6 +354,7 @@ GEM
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
+    simplecov-badge (2.0.2)
     simplecov-html (0.10.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -426,6 +427,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 6.0)
   simplecov
+  simplecov-badge
   sprockets-rails
   stimulus-rails
   turbo-rails

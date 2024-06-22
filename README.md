@@ -2,6 +2,7 @@
 
 # Lemontech Events
 [![Maintainability](https://api.codeclimate.com/v1/badges/7453c6a8f222864d2d23/maintainability)](https://codeclimate.com/github/genesisgonza05/lemontech_events/maintainability)
+![Coverage](coverage/badge.svg)
 
 Lemontech Events es una aplicación de gestión de eventos construida con Ruby on Rails y Docker, utilizando PostgreSQL como base de datos. Esta aplicación permite a los usuarios registrarse y autenticarse para gestionar sus eventos.
 

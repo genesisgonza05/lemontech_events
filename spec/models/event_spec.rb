@@ -61,4 +61,10 @@ RSpec.describe Event, type: :model do
       expect(subject).not_to be_valid
     end
   end
+
+  describe '.ransackable_associations' do
+    it 'returns the correct ransackable associations' do
+      expect(Event.ransackable_associations).to eq(['user'])
+    end
+  end
 end

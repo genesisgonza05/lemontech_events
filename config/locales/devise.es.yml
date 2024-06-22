@@ -34,11 +34,11 @@ es:
     attributes:
       user:
         current_password: "Password actual"
-        password_confirmation: "Confirma el Password"
+        password_confirmation: "Confirma confirmación"
     errors:
       messages:
         current_password: "Password actual"
-        password_confirmation: "Confirma el Password"
+        password_confirmation: "Confirma confirmación"
       models:
         user:
           attributes:

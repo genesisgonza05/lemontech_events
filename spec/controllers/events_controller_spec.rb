@@ -37,6 +37,30 @@ RSpec.describe EventsController, type: :controller do
 
   end
 
+  describe 'GET #new' do
+    context 'when user is signed in' do
+      before do
+        @user = create(:user)
+        sign_in @user
+      end
+
+      it 'assigns a new Event to @event' do
+        get :new
+        expect(assigns(:event)).to be_a_new(Event)
+      end
+
+      it 'assigns the event to the current user' do
+        get :new
+        expect(assigns(:event).user).to eq(@user)
+      end
+
+      it 'renders the new template' do
+        get :new
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+
   describe 'POST #create' do
     it 'creates an event for the logged-in user' do
       event_params = {
@@ -51,6 +75,54 @@ RSpec.describe EventsController, type: :controller do
       expect {
         post :create, params: { event: event_params }
       }.to change(user.events, :count).by(1)
+    end
+
+    context 'with valid attributes' do
+      it 'creates a new event and redirects to the event show page with a notice' do
+        post :create, params: { event: attributes_for(:event) }
+        expect(response).to redirect_to(event_url(assigns(:event)))
+        expect(flash[:notice]).to eq('Event was successfully created.')
+      end
+    end
+
+    context 'with invalid attributes' do
+      it 'does not create a new event and re-renders the new template with unprocessable entity status' do
+        post :create, params: { event: attributes_for(:event, name: nil) }
+        expect(response).to render_template(:new)
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
+
+  describe 'GET #edit' do
+    before do
+      @user = create(:user)
+      @event = create(:event, user: @user)
+      sign_in @user
+    end
+
+    context 'when params[:view] is "show"' do
+      it 'sets @view to "show" and @back_path to event_path' do
+        get :edit, params: { id: @event.id, view: 'show' }
+        expect(assigns(:view)).to eq('show')
+        expect(assigns(:back_path)).to eq(event_path(@event))
+      end
+    end
+
+    context 'when params[:view] is not "show"' do
+      it 'sets @view to the given value and @back_path to events_path' do
+        get :edit, params: { id: @event.id, view: 'list' }
+        expect(assigns(:view)).to eq('list')
+        expect(assigns(:back_path)).to eq(events_path)
+      end
+    end
+
+    context 'when params[:view] is nil' do
+      it 'sets @view to "list" and @back_path to events_path' do
+        get :edit, params: { id: @event.id }
+        expect(assigns(:view)).to eq('list')
+        expect(assigns(:back_path)).to eq(events_path)
+      end
     end
   end
 
@@ -69,6 +141,26 @@ RSpec.describe EventsController, type: :controller do
           event: { name: 'Updated Event' }
         }
       }.not_to change { other_user_event.reload.name }
+    end
+
+    context 'with valid attributes' do
+      it 'updates the event and redirects to the event show page with a notice' do
+        patch :update, params: { id: user_event.id, event: { name: 'Updated Event Name' } }
+        expect(response).to redirect_to(event_url(user_event))
+        expect(flash[:notice]).to eq('Event was successfully updated.')
+        user_event.reload
+        expect(user_event.name).to eq('Updated Event Name')
+      end
+    end
+
+    context 'with invalid attributes' do
+      it 'does not update the event and re-renders the edit template with unprocessable entity status' do
+        patch :update, params: { id: user_event.id, event: { name: nil } }
+        expect(response).to render_template(:edit)
+        expect(response).to have_http_status(:unprocessable_entity)
+        user_event.reload
+        expect(user_event.name).not_to be_nil
+      end
     end
   end
 

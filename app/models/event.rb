@@ -11,7 +11,7 @@ class Event < ApplicationRecord
   PER_PAGE = 5.freeze
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[name event_date_time capacity]
+    %w[id name event_date_time capacity]
   end
 
   def self.ransackable_associations(auth_object = nil)
