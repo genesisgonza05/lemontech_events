@@ -27,8 +27,6 @@ group :development, :test do
   gem "faker"
   gem "bullet"
   gem 'simplecov'
-  gem 'simplecov-badge'
-  
 end
 
 group :development do
@@ -40,5 +38,5 @@ group :test do
   gem "cucumber-rails", require: false
   gem "database_cleaner-active_record"
   gem "rails-controller-testing"
-  gem 'codeclimate-test-reporter', require: false
+  gem 'simplecov-shields-badge', require: false
 end
