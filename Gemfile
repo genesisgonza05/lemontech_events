@@ -34,6 +34,7 @@ end
 group :development do
   gem "web-console"
   gem "letter_opener_web"
+  gem 'rack-mini-profiler', require: false
 end
 
 group :test do

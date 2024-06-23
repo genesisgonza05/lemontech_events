@@ -35,6 +35,12 @@ docker-compose run web rake db:migrate
 docker-compose run web rake db:seed
 ```
 
+### 4. Incorporar las variables de entorno
+```sh
+RECAPTCHA_SITE_KEY=_request_var_to_any_code_owner_
+RECAPTCHA_SECRET_KEY=_request_var_to_any_code_owner_
+```
+
 ## Levantar la aplicación frecuentemente
 
 Una vez que has hecho la configuración inicial, puedes levantar la aplicación frecuentemente con:
