@@ -1,7 +1,7 @@
 FROM ruby:3.3.1
 
 # Instalar dependencias del sistema
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client build-essential
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client build-essential libnss3
 
 # Instalar Yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -18,6 +18,9 @@ RUN bundle install
 # Copiar package.json y ejecutar yarn install para generar yarn.lock
 COPY package.json /lemontech_events/package.json
 RUN yarn install
+
+# Copiar el archivo .env
+COPY .env /lemontech_events/.env
 
 # Copiar el resto del código de la aplicación
 COPY . /lemontech_events

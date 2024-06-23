@@ -19,6 +19,10 @@ services:
       - db
     environment:
       RAILS_ENV: development
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
+    env_file:
+      - .env
 
   test:
     build: .
@@ -29,6 +33,10 @@ services:
       - db
     environment:
       RAILS_ENV: test
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
+    env_file:
+      - .env
 
 volumes:
   postgres_data:

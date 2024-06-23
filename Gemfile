@@ -17,8 +17,9 @@ gem "bootstrap", "~> 5.1.3"
 gem "jquery-rails"
 gem "font-awesome-sass", "~> 4.7.0"
 gem "sass-rails", "~> 6.0"
-gem 'kaminari'
-gem 'ransack'
+gem "kaminari"
+gem "ransack"
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
@@ -26,17 +27,18 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "bullet"
-  gem 'simplecov'
+  gem "simplecov"
+  gem "dotenv-rails"
 end
 
 group :development do
   gem "web-console"
-  gem 'letter_opener_web'
+  gem "letter_opener_web"
 end
 
 group :test do
   gem "cucumber-rails", require: false
   gem "database_cleaner-active_record"
   gem "rails-controller-testing"
-  gem 'simplecov-shields-badge', require: false
+  gem "simplecov-shields-badge", require: false
 end
