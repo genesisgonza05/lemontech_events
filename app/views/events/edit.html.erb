@@ -3,7 +3,7 @@
     <h1 class="mb-0 font-weight-bold">Edición del evento N° <%= @event.id %></h1>
   </div>
   <div>
-    <%= link_to @back_path, class: "btn btn-secondary btn-icon btn-action-custome" do %>
+    <%= link_to @back_path, class: "btn btn-secondary btn-icon btn-action-custome", data: { turbo: false } do %>
       <i class="fa fa-arrow-left mr-2"></i> Volver
     <% end %>
   </div>

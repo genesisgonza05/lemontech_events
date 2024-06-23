@@ -7,5 +7,5 @@ Feature: User Profile Management
     Given I am logged in
     And I am on the profile page
     When I update the profile form with valid data
-    And I submit the form
-    Then I should see a message saying "Profile updated successfully."
+    And I submit the form "Actualizar"
+    Then I should see a message saying "Tu cuenta ha sido actualizada correctamente."

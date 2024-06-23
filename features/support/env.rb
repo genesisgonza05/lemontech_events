@@ -1,4 +1,5 @@
 require 'cucumber/rails'
+require File.expand_path(File.join(File.dirname(__FILE__), '../../app/helpers/events_helper'))
 
 # Capybara defaults to considering hidden elements visible, which is not what we want in our tests.
 Capybara.ignore_hidden_elements = true
@@ -12,3 +13,6 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 # FactoryBot configuration
 World(FactoryBot::Syntax::Methods)
+World(EventsHelper)
+
+

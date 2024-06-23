@@ -18,3 +18,9 @@ Given('I am logged in') do
   click_button 'Ingresar'
   expect(page).to have_content(I18n.t('devise.sessions.signed_in'))
 end
+
+Given('I am on the profile page') do
+  visit edit_user_registration_path
+end
+
+

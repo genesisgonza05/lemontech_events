@@ -4,7 +4,7 @@
     <h1 class="mb-0 font-weight-bold">Mis Eventos</h1>
   </div>
   <div>
-    <%= link_to 'Nuevo Evento', new_event_path, class: 'btn btn-primary btn-action-custome' %>
+    <%= link_to 'Nuevo Evento', new_event_path, class: 'btn btn-primary btn-action-custome', data: { turbo: false } %>
   </div>
 </div>
 
@@ -17,8 +17,8 @@
     <div class="col-md-4">
       <%= f.label :event_date_time_range, "Rango de fecha y hora", class: "font-weight-bold mb-2" %>
       <div class="d-flex">
-        <%= f.datetime_field :event_date_time_gteq, placeholder: "Inicio", class: "form-control me-2", readonly: true %>
-        <%= f.datetime_field :event_date_time_lteq, placeholder: "Fin", class: "form-control", readonly: true %>
+        <%= f.datetime_field :event_date_time_gteq, placeholder: "Inicio", class: "form-control me-2"%>
+        <%= f.datetime_field :event_date_time_lteq, placeholder: "Fin", class: "form-control" %>
       </div>
     </div>
     <div class="col-md-2">

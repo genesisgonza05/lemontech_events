@@ -7,6 +7,16 @@ es:
         edit: "Editar Evento"
     delete:
       confirm: '¿Estás seguro que deseas eliminar el evento (%{number}) - "%{name}"?'
+  controllers:
+    events:
+      manage:
+        not_auth: "No autorizado para gestionar este evento"
+      destroyed:
+        success: "Evento eliminado con éxito"
+      updated:
+        success: "Evento actualizado con éxito"
+      created:
+        success: "Evento creado con éxito"
   views:
     pagination:
       first: "<< "
@@ -23,3 +33,31 @@ es:
           other: "Mostrando <b>todos %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Mostrando %{entry_name} <b>%{first}–%{last}</b> de <b>%{total}</b> en total"
+  activerecord:
+    attributes:
+      event:
+        name: "Nombre"
+        location: "Ubicación"
+        event_date_time: "Fecha y hora"
+        capacity: "Capacidad"
+        description: "Descripción"
+        requirements: "Requisitos"
+    errors:
+      models:
+        event:
+          attributes:
+            name:
+              blank: "El nombre del evento no puede estar vacío"
+            event_date_time:
+              blank: "El fecha y hora del evento no puede estar vacío"
+            description:
+              blank: "La descripción del evento no puede estar vacío"
+            location:
+              blank: "La ubicación del evento no puede estar vacío"
+            capacity:
+              blank: "La capacidad del evento no puede estar vacío"
+              not_a_number: "La capacidad del evento debe ser un numero entero"
+            requirements:
+              blank: "La ubicación del evento no puede estar vacío"
+
+

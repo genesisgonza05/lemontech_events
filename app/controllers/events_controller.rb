@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @q = current_user.events_ordered(sort_column, sort_direction).ransack(params[:q])
+    @q = current_user.events_ordered_with_ransack(params[:sort], params[:direction], params[:q])
     @events = @q.result(distinct: true).page(params[:page]).per(Event::PER_PAGE)
 
     respond_to do |format|
@@ -32,10 +32,9 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = current_user.events.build(event_params)
-
     respond_to do |format|
       if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+        format.html { redirect_to event_url(@event), notice: I18n.t('controllers.events.created.success') }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +47,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to event_url(@event), notice: "Event was successfully updated." }
+        format.html { redirect_to event_url(@event), notice: I18n.t('controllers.events.updated.success') }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,9 +59,8 @@ class EventsController < ApplicationController
   # DELETE /events/1 or /events/1.json
   def destroy
     @event.destroy!
-
     respond_to do |format|
-      format.html { redirect_to events_url, notice: "Evento eliminado con éxito." }
+      format.html { redirect_to events_url, notice: I18n.t('controllers.events.destroyed.success') }
       format.json { head :no_content }
     end
   end
@@ -75,14 +73,6 @@ class EventsController < ApplicationController
 
   def check_user_event
     @event = current_user.events.find_by(id: params[:id])
-    redirect_to events_path, notice: "Not authorized to edit this event" if @event.nil?
-  end
-
-  def sort_column
-    %w[event_date_time name location capacity].include?(params[:sort]) ? params[:sort] : "id"
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    redirect_to events_path, notice: I18n.t('controllers.events.manage.not_auth') if @event.nil?
   end
 end

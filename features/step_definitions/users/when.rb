@@ -6,13 +6,16 @@ end
 When('I fill in the registration form with valid data') do
   fill_in 'Email', with: 'test@example.com'
   fill_in 'Password', with: 'password'
-  fill_in 'Password confirmation', with: 'password'
-end
-
-When('I submit the form {string}') do |message|
-  click_button message
+  fill_in 'Confirma tu password', with: 'password'
 end
 
 When('I click the logout link') do
   click_link 'Cerrar Sesión'
+end
+
+When('I update the profile form with valid data') do
+  fill_in 'Email', with: 'newemail@example.com'
+  fill_in 'Password', with: 'newpassword', match: :prefer_exact
+  fill_in 'Confirma tu nuevo password', with: 'newpassword', match: :prefer_exact
+  fill_in 'Password actual', with: @user.password, match: :prefer_exact
 end

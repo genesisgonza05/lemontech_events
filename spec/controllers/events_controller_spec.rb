@@ -81,7 +81,7 @@ RSpec.describe EventsController, type: :controller do
       it 'creates a new event and redirects to the event show page with a notice' do
         post :create, params: { event: attributes_for(:event) }
         expect(response).to redirect_to(event_url(assigns(:event)))
-        expect(flash[:notice]).to eq('Event was successfully created.')
+        expect(flash[:notice]).to eq(I18n.t('controllers.events.created.success'))
       end
     end
 
@@ -147,7 +147,7 @@ RSpec.describe EventsController, type: :controller do
       it 'updates the event and redirects to the event show page with a notice' do
         patch :update, params: { id: user_event.id, event: { name: 'Updated Event Name' } }
         expect(response).to redirect_to(event_url(user_event))
-        expect(flash[:notice]).to eq('Event was successfully updated.')
+        expect(flash[:notice]).to eq(I18n.t('controllers.events.updated.success'))
         user_event.reload
         expect(user_event.name).to eq('Updated Event Name')
       end
