@@ -23,7 +23,7 @@ Sigue estos pasos para configurar y levantar la aplicación por primera vez:
 ### 1. Clonar el Repositorio
 
 ```sh
-git clone https://github.com/PENDIENTE/lemontech_events.git
+git clone https://github.com/genesisgonza05/lemontech_events.git
 cd lemontech_events
 ```
 
