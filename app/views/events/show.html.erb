@@ -10,7 +10,7 @@
   </div>
 
   <div class="mr-2">
-    <%= button_to event_path(@event), method: :delete, remote: true, data: { confirm: I18n.t('events.delete.confirm', name: @event.name, number: @event.id), turbo: false }, class: "btn btn-light btn-sm btn-icon d-inline-block btn-action-custome mr-2" do %>
+    <%= button_to event_path(@event), method: :delete, data: { confirm: I18n.t('events.delete.confirm', name: @event.name, number: @event.id), turbo: false }, class: "btn btn-light btn-sm btn-icon d-inline-block btn-action-custome mr-2" do %>
       <i class="fa fa-trash"></i> Eliminar
     <% end %>
   </div>
