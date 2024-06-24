@@ -2,7 +2,7 @@
 require 'spec_helper'
 require 'capybara/rspec'
 require 'simplecov_helper' 
-
+require 'devise'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
