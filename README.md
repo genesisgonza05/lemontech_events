@@ -63,6 +63,9 @@ Una vez realizados los 4 pasos anteriores, puedes levantar la aplicación con:
 docker-compose up
 ```
 
+> Ya puedes ver el proyecto en tu local accediendo a la url que se genero desde la consola: http://localhost:3000/
+
+
 ## Levantar la aplicación frecuentemente
 
 Una vez que has hecho la configuración inicial, puedes levantar la aplicación frecuentemente con:
