@@ -2,13 +2,17 @@
 
 # Lemontech Events
 [![Maintainability](https://api.codeclimate.com/v1/badges/7453c6a8f222864d2d23/maintainability)](https://codeclimate.com/github/genesisgonza05/lemontech_events/maintainability)
-[![Coverage](badge.svg)](https://github.com/genesisgonza05/lemontech_events)
+[![Coverage Status](badge.svg)](https://github.com/genesisgonza05/lemontech_events)
+![Docker](https://img.shields.io/badge/docker-ready-blue.svg)
+![Ruby on Rails](https://img.shields.io/badge/Rails-7.1.3.3-orange.svg)
+![Ruby](https://img.shields.io/badge/Ruby-3.3.1-red)
 
 Lemontech Events es una aplicación de gestión de eventos construida con Ruby on Rails y Docker, utilizando PostgreSQL como base de datos. Esta aplicación permite a los usuarios registrarse y autenticarse para gestionar sus eventos.
 
 ## Requisitos Previos
 
-Asegúrate de tener instalados los siguientes programas en tu máquina:
+> IMPORTANTE!: Asegúrate de tener instalados los siguientes programas en tu máquina para iniciar la configuración del proyecto:
+
 - [Docker](https://www.docker.com/products/docker-desktop)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
@@ -36,9 +40,27 @@ docker-compose run web rake db:seed
 ```
 
 ### 4. Incorporar las variables de entorno
+
+Debes incorporar este listado de variables de entorno en el archivo .env en la raiz del proyecto.
+
 ```sh
 RECAPTCHA_SITE_KEY=_request_var_to_any_code_owner_
 RECAPTCHA_SECRET_KEY=_request_var_to_any_code_owner_
+```
+
+> Si aún no esta creado el file .env en la raíz del proyecto, crealo con este comando:
+```sh
+touch .env
+```
+> Luego copia y pega el listado de variables en este file y guarda.
+
+
+### 5. Levantar la aplicación
+
+Una vez realizados los 4 pasos anteriores, puedes levantar la aplicación con:
+
+```sh
+docker-compose up
 ```
 
 ## Levantar la aplicación frecuentemente
@@ -73,18 +95,31 @@ lemontech_events/
 	├── app/
 	├── bin/
 	├── config/
+	├── coverage/
 	├── db/
-	├── docker-compose.yml
-	├── Dockerfile
-	├── Gemfile
-	├── Gemfile.lock
+	├── features/
 	├── lib/
 	├── log/
 	├── public/
-	├── README.md
+	├── spec/
 	├── storage/
-	├── test/
-	└── tmp/
+	├── tmp/
+	├── vendor/
+	├── .dockerignore
+	├── .gitattributes
+	├── .gitignore
+	├── .rspec
+	├── .ruby-version
+	├── Dockerfile
+	├── Gemfile
+	├── Gemfile.lock
+	├── README.md
+	├── Rakefile
+	├── badge.svg
+	├── config.ru
+	├── docker-compose.yml
+	├── package.json
+
 ```
 
 ## Mailing
