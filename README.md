@@ -22,48 +22,69 @@ Sigue estos pasos para configurar y levantar la aplicación por primera vez:
 
 ### 1. Clonar el Repositorio
 
+> Clonado y acceso al proyecto
+
+Clona el proyecto en tu local desde el terminal y accede en el folder del proyecto
+
 ```sh
 git clone https://github.com/genesisgonza05/lemontech_events.git
 cd lemontech_events
 ```
 
-### 2. Construir y Levantar los Contenedores de Docker
+### 2. Incorporar las variables de entorno
+
+> Copiado de las variables de entorno
+
+Para esto, primero crea el archivo .env en la raiz del proyecto:
+
 ```sh
-docker-compose up -d
+touch .env
 ```
 
-### 3. Crear y Migrar la Base de Datos
-```sh
-docker-compose run web rake db:create
-docker-compose run web rake db:migrate
-docker-compose run web rake db:seed
-```
+Luego copia y pega este listado de variables de entorno en el archivo .env en la raiz del proyecto y guarda los cambios en el archivo.
 
-### 4. Incorporar las variables de entorno
-
-Debes incorporar este listado de variables de entorno en el archivo .env en la raiz del proyecto.
+> _El valor de estas variables se encuentran en el archivo de documentacion del proyecto "Documentación de LemontechEvents", solicitar este documento a un code owner._
 
 ```sh
 RECAPTCHA_SITE_KEY=_request_var_to_any_code_owner_
 RECAPTCHA_SECRET_KEY=_request_var_to_any_code_owner_
 ```
 
-> Si aún no esta creado el file .env en la raíz del proyecto, crealo con este comando:
-```sh
-touch .env
-```
-> Luego copia y pega el listado de variables en este file y guarda.
+### 3. Construir Contenedores de Docker
 
+> Construcción y levantado de contenedores
+
+Construye y levanta los contenedores de Docker por medio del siguiente comando:
+
+```sh
+docker-compose up -d
+```
+
+### 4. Disponibilizar la Base de Datos
+
+> Creación de la base de datos y set de datos iniciales
+
+Crea la base de datos, realiza la migración y ejecuta el seed para inicializarla con datos con los siguientes 3 comandos respectivamente:
+
+```sh
+docker-compose run web rake db:create
+docker-compose run web rake db:migrate
+docker-compose run web rake db:seed
+```
 
 ### 5. Levantar la aplicación
 
-Una vez realizados los 4 pasos anteriores, puedes levantar la aplicación con:
+> Despliegue de la aplicación
+
+Una vez realizados los 4 pasos anteriores, puedes levantar la aplicación con el siguiente comando:
 
 ```sh
 docker-compose up
 ```
 
-> Ya puedes ver el proyecto en tu local accediendo a la url que se genero desde la consola: http://localhost:3000/
+Ya puedes ver el proyecto en tu local accediendo a la url que se genero desde la consola: http://localhost:3000/
+
+> La aplicación cuenta con un usuario precargado con datos base para pruebas: (Email: main@test.com | Password: 123456)
 
 
 ## Levantar la aplicación frecuentemente
@@ -75,6 +96,7 @@ docker-compose up
 ```
 
 Para detener los contenedores:
+
 ```sh
 docker-compose down
 ```
@@ -82,47 +104,15 @@ docker-compose down
 ## Ejecutar Pruebas
 
 Para ejecutar las pruebas de Rspec (Unitarias):
+
 ```sh
 docker-compose run test rspec
 ```
 
 Para ejecutar las pruebas de Cucumber (de Integración):
+
 ```sh
 docker-compose run test cucumber
-```
-
-## Estructura del Proyecto
-
-```sh
-lemontech_events/
-	├── app/
-	├── bin/
-	├── config/
-	├── coverage/
-	├── db/
-	├── features/
-	├── lib/
-	├── log/
-	├── public/
-	├── spec/
-	├── storage/
-	├── tmp/
-	├── vendor/
-	├── .dockerignore
-	├── .gitattributes
-	├── .gitignore
-	├── .rspec
-	├── .ruby-version
-	├── Dockerfile
-	├── Gemfile
-	├── Gemfile.lock
-	├── README.md
-	├── Rakefile
-	├── badge.svg
-	├── config.ru
-	├── docker-compose.yml
-	├── package.json
-
 ```
 
 ## Mailing

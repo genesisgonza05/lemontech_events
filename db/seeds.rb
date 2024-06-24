@@ -1,11 +1,10 @@
 require 'faker'
 
 # Creating the main user
-user = User.create!(
-  email: 'main@test.com',
-  password: '123456',
-  password_confirmation: '123456'
-)
+user = User.find_or_create_by(email: 'main@test.com') do |user|
+  user.password = '123456'
+  user.password_confirmation = '123456'
+end
 
 # Creating 50 events relates to the main user
 50.times do
@@ -20,4 +19,4 @@ user = User.create!(
   )
 end
 
-puts "Seed completed: 1 user with 50 events created"
+puts "Seed completed: 1 user with events created"
