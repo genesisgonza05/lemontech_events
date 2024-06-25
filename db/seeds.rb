@@ -11,7 +11,7 @@ end
   Event.create!(
     name: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph(sentence_count: 5),
-    event_date_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 365),
+    event_date_time: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 365),
     location: Faker::Address.full_address,
     capacity: Faker::Number.between(from: 10, to: 500),
     requirements: Faker::Lorem.sentence(word_count: 5),
