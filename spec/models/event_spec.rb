@@ -31,6 +31,12 @@ RSpec.describe Event, type: :model do
       expect(subject).not_to be_valid
     end
 
+    it "is not valid if event_date_time is in the past" do
+      subject.event_date_time = 1.day.ago
+      expect(subject).not_to be_valid
+      expect(subject.errors[:event_date_time]).to include(I18n.t("activerecord.errors.models.event.attributes.event_date_time.time_in_pass"))
+    end
+
     it 'is not valid without a location' do
       subject.location = nil
       expect(subject).not_to be_valid
