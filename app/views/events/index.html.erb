@@ -28,7 +28,10 @@
         <%= f.number_field :capacity_lteq, placeholder: "Máx", class: "form-control" %>
       </div>
     </div>
-    <div class="col-md-2 d-flex align-items-center btn-box">
+    <div class="col-md-1 d-flex align-items-center btn-box">
+      <%= button_tag "Limpiar", type: "reset", class: "btn btn-secondary w-100 btn-action-custome btn-reset" %>
+    </div>    
+    <div class="col-md-1 d-flex align-items-center btn-box">
       <%= f.submit "Buscar", class: "btn btn-primary w-100 btn-action-custome" %>
     </div>
   </div>
