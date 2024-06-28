@@ -3,19 +3,35 @@
     <h1 class="mb-0 font-weight-bold">Evento N° <%= @event.id %></h1>
   </div>
 
-  <div class="mr-2">
-    <%= link_to edit_event_path(@event, view: "show"), class: "btn btn-edit btn-sm btn-icon btn-action-custome mr-2", data: { turbo: false } do %>
-      <i class="fa fa-edit"></i> Editar
+  <% if @event.user_id == current_user.id %>
+    <div class="mr-2">
+      <%= link_to edit_event_path(@event, view: "show"), class: "btn btn-edit btn-sm btn-icon btn-action-custome mr-2", data: { turbo: false } do %>
+        <i class="fa fa-edit"></i> Editar
+      <% end %>
+    </div>
+    <div class="mr-2">
+      <%= button_to event_path(@event), method: :delete, data: { confirm: I18n.t('events.delete.confirm', name: @event.name, number: @event.id), turbo: false }, class: "btn btn-light btn-sm btn-icon d-inline-block btn-action-custome mr-2" do %>
+        <i class="fa fa-trash"></i> Eliminar
+      <% end %>
+    </div>
+  <% else %>
+    <% if current_user.participated_events.include?(@event) %>
+      <div class="mr-2">
+        <%= button_to event_participation_path(@event, current_user.participations.find_by(event: @event)), method: :delete, data: { turbo: false }, class: "btn btn-light btn-sm btn-icon btn-action-custome mr-2" do %>
+          <i class="fa fa-times"></i> No participar
+        <% end %>
+      </div>
+    <% else %>
+      <div class="mr-2">
+        <%= button_to event_participations_path(@event), method: :post, data: { turbo: false }, class: "btn btn-success btn-sm btn-icon d-inline-block btn-action-custome mr-2" do %>
+          <i class="fa fa-plus"></i> Participar
+        <% end %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 
-  <div class="mr-2">
-    <%= button_to event_path(@event), method: :delete, data: { confirm: I18n.t('events.delete.confirm', name: @event.name, number: @event.id), turbo: false }, class: "btn btn-light btn-sm btn-icon d-inline-block btn-action-custome mr-2" do %>
-      <i class="fa fa-trash"></i> Eliminar
-    <% end %>
-  </div>
   <div>
-    <%= link_to events_path, class: "btn btn-secondary btn-icon btn-action-custome", data: { turbo: false } do %>
+    <%= link_to events_path(all: true), class: "btn btn-secondary btn-icon btn-action-custome", data: { turbo: false } do %>
       <i class="fa fa-arrow-left mr-2"></i> Volver
     <% end %>
   </div>

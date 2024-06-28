@@ -3,19 +3,44 @@ require 'rails_helper'
 RSpec.describe EventsController, type: :controller do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
+  let(:user_participant) { create(:user) }
 
   let!(:user_event) { create(:event, user: user, name: 'User Event') }
   let!(:other_user_event) { create(:event, user: other_user, name: 'Other User Event') }
+  let!(:participated_event) { create(:event, user: other_user, name: 'Participated Event') }
 
   before do
     sign_in user
+    create(:participation, user: user, event: participated_event)
   end
 
   describe 'GET #index' do
-    it 'returns only the events of the logged-in user' do
-      get :index
-      expect(assigns(:events)).to match_array([user_event])
-      expect(assigns(:events)).not_to include(other_user_event)
+    context 'when params[:all] is true' do
+      it 'returns all events' do
+        get :index, params: { all: 'true' }
+        expect(assigns(:events)).to include(other_user_event, participated_event)
+        expect(assigns(:events)).not_to include(user_event)
+      end
+
+      it 'returns only participating events when filter is set to participating' do
+        get :index, params: { all: 'true', participation_filter: 'participating' }
+        expect(assigns(:events)).to match_array([participated_event])
+        expect(assigns(:events)).not_to include(other_user_event, user_event)
+      end
+
+      it 'returns only non-participating events when filter is set to not participating' do
+        get :index, params: { all: 'true', participation_filter: 'not_participating' }
+        expect(assigns(:events)).to match_array([other_user_event])
+        expect(assigns(:events)).not_to include(participated_event, user_event)
+      end
+    end
+
+    context 'when params[:all] is not true' do
+      it 'returns only the events of the logged-in user' do
+        get :index
+        expect(assigns(:events)).to match_array([user_event])
+        expect(assigns(:events)).not_to include(other_user_event, participated_event)
+      end
     end
   end
 
@@ -24,17 +49,6 @@ RSpec.describe EventsController, type: :controller do
       get :show, params: { id: user_event.id }
       expect(assigns(:event)).to eq(user_event)
     end
-
-    context 'when the event does not belong to the logged-in user' do
-      it 'redirects to the events index' do
-        begin
-          get :show, params: { id: other_user_event.id }
-        rescue ActiveRecord::RecordNotFound
-          expect(response).to redirect_to(events_path)
-        end
-      end
-    end
-
   end
 
   describe 'GET #new' do

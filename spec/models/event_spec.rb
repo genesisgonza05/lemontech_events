@@ -68,9 +68,35 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe '.ransackable_attributes' do
+    it 'returns the correct ransackable attributes' do
+      expect(Event.ransackable_attributes).to eq(%w[id name event_date_time capacity])
+    end
+  end
+
   describe '.ransackable_associations' do
     it 'returns the correct ransackable associations' do
       expect(Event.ransackable_associations).to eq(['user'])
+    end
+  end
+
+  describe '.sort_column' do
+    it 'returns the correct column when valid' do
+      expect(Event.sort_column('name')).to eq('name')
+    end
+
+    it 'returns the default column when invalid' do
+      expect(Event.sort_column('invalid_column')).to eq(Event::DEFAULT_SORT)
+    end
+  end
+
+  describe '.sort_direction' do
+    it 'returns the correct direction when valid' do
+      expect(Event.sort_direction('asc')).to eq('asc')
+    end
+
+    it 'returns the default direction when invalid' do
+      expect(Event.sort_direction('invalid_direction')).to eq(Event::DEFAULT_DIR)
     end
   end
 end

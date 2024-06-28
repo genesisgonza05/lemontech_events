@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :events
+  resources :events do
+    resources :participations, only: [:create, :destroy]
+  end
+
   root to: "events#index"
 end

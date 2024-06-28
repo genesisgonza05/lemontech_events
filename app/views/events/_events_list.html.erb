@@ -5,11 +5,11 @@
     <table class="table table-striped mb-4">
       <thead>
         <tr>
-          <th class="pl-3"><%= sort_link(@q, :id, "N°", {data: {turbo: false}}) %></th>
-          <th><%= sort_link(@q, :name, "Name", {data: {turbo: false}}) %></th>
-          <th><%= sort_link(@q, :event_date_time, "Fecha y Hora", {data: {turbo: false}}) %></th>
-          <th><%= sort_link(@q, :capacity, "Capacidad", {data: {turbo: false}}) %></th>
-          <th class="text-right"></th>
+          <th class="pl-3"><%= sort_link(@q, :id, "N°", {all: params[:all], data: {turbo: false}}) %></th>
+          <th><%= sort_link(@q, :name, "Nombre", {all: params[:all], data: {turbo: false}}) %></th>
+          <th><%= sort_link(@q, :event_date_time, "Fecha y Hora", {all: params[:all], data: {turbo: false}}) %></th>
+          <th><%= sort_link(@q, :capacity, "Capacidad", {all: params[:all], data: {turbo: false}}) %></th>
+          <th class="text-right">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -20,14 +20,18 @@
             <td><%= long_formatted_date_time(event.event_date_time) %></td>
             <td><%= event.capacity %></td>
             <td class="text-right actions-column">
-              <%= link_to event_path(event), class: "btn btn-info btn-sm btn-icon mr-2", data: { turbo: false } do %>
-                <i class="fa fa-eye text-white"></i>
-              <% end %>
-              <%= link_to edit_event_path(event), class: "btn btn-edit btn-sm btn-icon mr-2", data: { turbo: false } do %>
-                <i class="fa fa-edit"></i>
-              <% end %>
-              <%= button_to event_path(event), method: :delete, data: { confirm: I18n.t('events.delete.confirm', name: event.name, number: event.id), turbo: false }, class: "btn btn-light btn-sm btn-icon d-inline-block" do %>
-                <i class="fa fa-trash"></i>
+              <% if params[:all] %>
+                <%= render 'participations/button', event: event %>
+              <% else %>
+                <%= link_to event_path(event), class: "btn btn-info btn-sm btn-icon mr-2", data: { turbo: false } do %>
+                  <i class="fa fa-eye text-white"></i>
+                <% end %>
+                <%= link_to edit_event_path(event), class: "btn btn-edit btn-sm btn-icon mr-2", data: { turbo: false } do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+                <%= button_to event_path(event), method: :delete, data: { confirm: I18n.t('events.delete.confirm', name: event.name, number: event.id), turbo: false }, class: "btn btn-light btn-sm btn-icon d-inline-block" do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
               <% end %>
             </td>
           </tr>
@@ -35,7 +39,7 @@
       </tbody>
     </table>
     <div class="d-flex justify-content-center">
-      <%= paginate @events %>
+      <%= paginate events, params: { all: params[:all] } %>
     </div>
   </div>
 <% end %>

@@ -1,11 +1,24 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_user_event, only: %i[ show edit update destroy ]
+  before_action :check_user_event, only: %i[ edit update destroy ]
+  before_action :check_event, only: %i[ show ]
 
   # GET /events
   def index
-    @q = current_user.events_ordered_with_ransack(params[:sort], params[:direction], params[:q])
-    @events = @q.result(distinct: true).page(params[:page]).per(Event::PER_PAGE)
+    if params[:all] == "true"
+      @q = Event.not_current_user_ordered_with_ransack(current_user.id, params[:sort], params[:direction], params[:q])
+      if params[:participation_filter] == "participating"
+        @events = @q.result(distinct: true).joins(:participants).where(participations: { user_id: current_user.id }).page(params[:page]).per(Event::PER_PAGE)
+      elsif params[:participation_filter] == "not_participating"
+        @events = @q.result(distinct: true).where.not(id: current_user.participations.select(:event_id)).page(params[:page]).per(Event::PER_PAGE)
+      else
+        @events = @q.result(distinct: true).page(params[:page]).per(Event::PER_PAGE)
+      end
+    else
+      @q = current_user.events_ordered_with_ransack(params[:sort], params[:direction], params[:q])
+      @events = @q.result(distinct: true).page(params[:page]).per(Event::PER_PAGE)
+    end
+
 
     respond_to do |format|
       format.html
@@ -16,6 +29,7 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    @all = params[:all] || false
   end
 
   # GET /events/new
@@ -75,4 +89,10 @@ class EventsController < ApplicationController
     @event = current_user.events.find_by(id: params[:id])
     redirect_to events_path, notice: I18n.t('controllers.events.manage.not_auth') if @event.nil?
   end
+
+  def check_event
+    @event = Event.find_by(id: params[:id])
+    redirect_to events_path, notice: I18n.t('controllers.events.manage.not_auth') if @event.nil?
+  end
+
 end

@@ -7,6 +7,17 @@
     </span>
     <ul class="navbar-nav ms-auto d-flex align-items-center">
       <li class="nav-item d-flex align-items-center">
+        <% if params[:all] %>
+          <%= link_to events_path, class: "nav-link" do %>
+            <span>Mis Eventos</span>
+          <% end %>
+        <% else %>
+          <%= link_to events_path(all: true), class: "nav-link" do %>
+            <span>Eventos</span>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="nav-item d-flex align-items-center">
         <%= link_to edit_user_registration_path, class: "nav-link d-flex align-items-center profile-link", data: { turbo: false } do %>
           <%= image_tag "profile-blank.png", alt: "Perfil", class: "rounded-circle", width: 30, height: 30 %>
           <span>Perfil</span>

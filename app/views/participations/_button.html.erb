@@ -1,0 +1,13 @@
+<%= link_to event_path(event, all: true), class: "btn btn-info btn-sm btn-icon mr-2", data: { turbo: false } do %>
+  <i class="fa fa-eye text-white"></i>
+<% end %>
+
+<% if current_user.participated_events.include?(event) %>
+  <%= button_to event_participation_path(event, current_user.participations.find_by(event: event)), method: :delete, remote: true, data: { turbo: false }, class: "btn btn-danger btn-sm btn-icon mr-2" do %>
+    <i class="fa fa-times text-white"></i>
+  <% end %>
+<% else %>
+  <%= button_to event_participations_path(event), method: :post, remote: true, data: { turbo: false }, class: "btn btn-success btn-sm btn-icon mr-2" do %>
+    <i class="fa fa-plus text-white"></i>
+  <% end %>
+<% end %>
